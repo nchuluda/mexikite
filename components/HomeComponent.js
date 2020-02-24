@@ -35,7 +35,7 @@ class Home extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={{marginTop: 5, alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
+                <View style={{alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
                     <Text>Featured Kite School</Text>
                 </View>
                 <RenderItem 

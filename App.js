@@ -9,7 +9,7 @@ import Main from './components/MainComponent';
 import Directory from './components/DirectoryComponent';
 import SchoolInfo from './components/SchoolInfoComponent';
 import MyTabs from './navigation/Navigation';
-import MyTabs2 from './navigation/Navigation';
+
 
 function LogoTitle() {
   return (
@@ -23,7 +23,7 @@ function LogoTitle() {
 export default function App() {
   return (
     <NavigationContainer>
-      <MyTabs2 />
+      <MyTabs />
     </NavigationContainer>
   );
 }

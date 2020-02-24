@@ -5,15 +5,43 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
+import About from '../components/AboutComponent';
 import Directory from '../components/DirectoryComponent';
 import Home from '../components/HomeComponent';
 import Main from '../components/MainComponent';
 import SchoolInfo from '../components/SchoolInfoComponent';
 
-import A from '../components/A';
-import B from '../components/B';
-import C from '../components/C';
-import D from '../components/D';
+
+const AboutStack = createStackNavigator();
+
+function AboutStackScreen() {
+  return (
+    <AboutStack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerTintColor: 'white',
+        headerStyle: { backgroundColor: '#142850' },
+      }}>
+      <AboutStack.Screen name="About" component={About} />
+    </AboutStack.Navigator>
+  );
+}
+
+const HomeStack = createStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerTintColor: 'white',
+        headerStyle: { backgroundColor: '#142850' },
+      }}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="SchoolInfo" component={SchoolInfo} />
+    </HomeStack.Navigator>
+  );
+}
 
 const DirectoryStack = createStackNavigator();
 
@@ -23,68 +51,11 @@ function DirectoryStackScreen() {
       initialRouteName="Directory"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: '#142850' },
       }}>
       <DirectoryStack.Screen name="Directory" component={Directory} />
-      
+      <DirectoryStack.Screen name="SchoolInfo" component={SchoolInfo} />
     </DirectoryStack.Navigator>
-  );
-}
-
-const AStack = createStackNavigator();
-
-function AStackScreen() {
-  return (
-    <AStack.Navigator>
-      <AStack.Screen name="A" component={A} />
-      <AStack.Screen name="B" component={B} />
-    </AStack.Navigator>
-  );
-}
-
-const CStack = createStackNavigator();
-
-function CStackScreen() {
-  return (
-    <CStack.Navigator>
-      <CStack.Screen name="C" component={C} />
-      <CStack.Screen name="D" component={D} />
-    </CStack.Navigator>
-  );
-}
-
-const Tab2 = createBottomTabNavigator();
-
-function MyTabs2() {
-  return (
-     <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'A') {
-              iconName = focused ? 'ios-home' : 'ios-home';
-            } else if (route.name === 'B') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            } else if (route.name === 'C') {
-              iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: '#0c7b93',
-          inactiveTintColor: 'gray',
-          activeBackgroundColor: '#fff',
-          inactiveBackgroundColor: '#fff',
-        }}
-      >
-        <Tab.Screen name="AStack" component={AStackScreen} />
-        <Tab.Screen name="CStack" component={CStackScreen} />
-        
-      </Tab.Navigator>
   );
 }
 
@@ -101,7 +72,7 @@ function MyTabs() {
               iconName = focused ? 'ios-home' : 'ios-home';
             } else if (route.name === 'Directory') {
               iconName = focused ? 'ios-list-box' : 'ios-list';
-            } else if (route.name === 'DirectoryStack') {
+            } else if (route.name === 'About') {
               iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
             }
 
@@ -116,10 +87,12 @@ function MyTabs() {
           inactiveBackgroundColor: '#fff',
         }}
       >
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Directory" component={DirectoryStackScreen} />
+        <Tab.Screen name="About" component={AboutStackScreen} />
+
       </Tab.Navigator>
   )
 };
 
-export default MyTabs2;
+export default MyTabs;
