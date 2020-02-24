@@ -48,25 +48,24 @@ function MyTabs() {
         }}
       >
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="SchoolInfo" component={SchoolInfo} />
-        <Tab.Screen name="DirectoryStack" component={DirectoryStack} />
+        <Tab.Screen name="Directory" component={DirectoryStackScreen} />
       </Tab.Navigator>
   )
 };
 
-const Stack = createStackNavigator();
+const DirectoryStack = createStackNavigator();
 
-function DirectoryStack() {
+function DirectoryStackScreen() {
   return (
-    <Stack.Navigator
+    <DirectoryStack.Navigator
       initialRouteName="Directory"
       screenOptions={{
         headerTintColor: 'white',
         headerStyle: { backgroundColor: 'tomato' },
       }}>
-      <Stack.Screen name="Directory" component={Directory} />
-      <Stack.Screen name="SchoolInfo" compoonent={SchoolInfo} />
-    </Stack.Navigator>
+      <DirectoryStack.Screen name="Directory" component={Directory} />
+      <DirectoryStack.Screen name="SchoolInfo" compoonent={SchoolInfo} />
+    </DirectoryStack.Navigator>
   );
 }
 
