@@ -30,7 +30,7 @@ function MyTabs() {
 
             if (route.name === 'Home') {
               iconName = focused ? 'ios-home' : 'ios-home';
-            } else if (route.name === 'Main') {
+            } else if (route.name === 'Directory') {
               iconName = focused ? 'ios-list-box' : 'ios-list';
             } else if (route.name === 'DirectoryStack') {
               iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
