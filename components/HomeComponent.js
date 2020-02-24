@@ -35,12 +35,11 @@ class Home extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={{marginTop: 5, alignItems: 'center'}}>
+                <View style={{marginTop: 5, alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
                     <Text>Featured Kite School</Text>
                 </View>
                 <RenderItem 
                     item={this.state.school.filter(school => school.featured)[0]} />
-                
             </ScrollView>
         );
     }

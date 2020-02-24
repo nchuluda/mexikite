@@ -28,7 +28,7 @@ class SchoolInfo extends Component {
     }
     
     static navigationOptions = {
-        title: 'SchoolInfo'
+        title: 'School Information'
     };
 
     render() {
