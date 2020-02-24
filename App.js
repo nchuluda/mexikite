@@ -1,19 +1,81 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { View, Text, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import Home from './components/HomeComponent';
+import Main from './components/MainComponent';
+import Directory from './components/DirectoryComponent';
+import SchoolInfo from './components/SchoolInfoComponent';
 
-export default function App() {
+
+function LogoTitle() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Image
+      style={{ width: 50, height: 50 }}
+      source={require('./components/images/mexikite.png')}
+    />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'ios-home' : 'ios-home';
+            } else if (route.name === 'Main') {
+              iconName = focused ? 'ios-list-box' : 'ios-list';
+            } else if (route.name === 'DirectoryStack') {
+              iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#0c7b93',
+          inactiveTintColor: 'gray',
+          activeBackgroundColor: '#fff',
+          inactiveBackgroundColor: '#fff',
+        }}
+      >
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="SchoolInfo" component={SchoolInfo} />
+        <Tab.Screen name="DirectoryStack" component={DirectoryStack} />
+      </Tab.Navigator>
+  )
+};
+
+const Stack = createStackNavigator();
+
+function DirectoryStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Directory"
+      screenOptions={{
+        headerTintColor: 'white',
+        headerStyle: { backgroundColor: 'tomato' },
+      }}>
+      <Stack.Screen name="Directory" component={Directory} />
+      <Stack.Screen name="SchoolInfo" compoonent={SchoolInfo} />
+    </Stack.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    
+    </NavigationContainer>
+  );
+}
+
