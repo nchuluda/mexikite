@@ -32,7 +32,7 @@ class SchoolInfo extends Component {
     };
 
     render() {
-        const schoolId = this.props.navigation.getParam('schoolId');
+        const schoolId = this.props.route.params.schoolId;
         const school = this.state.school.filter(school => school.id === schoolId)[0];
         return <RenderSchool school={school} />;
     }

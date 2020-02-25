@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image, ImageBackground } from 'react-native';
 import { Card } from 'react-native-elements';
 import { SCHOOL } from '../shared/school';
 
@@ -28,23 +28,20 @@ class Home extends Component {
         };
     }
 
-    static navigationOptions = {
-        title: 'Home'
-    }
+
 
     render() {
         return (
             <ScrollView>
             
-                <View style={{flex: 1, alignItems: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center'}}>
                 <Image
                 resizeMode='contain'
-                resizeMethod='scale'
                 source={require('./images/home.jpg')}
-                
-            />
-                    
+                />
                 </View>
+                    
+                
                 <View style={{flex: 1, alignItems: 'center', marginTop: 10}}>
 
                 <Text>Featured Kite School</Text>
