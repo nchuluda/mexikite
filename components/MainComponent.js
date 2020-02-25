@@ -4,9 +4,8 @@ import SchoolInfo from './SchoolInfoComponent';
 import { View } from 'react-native';
 import { SCHOOL } from '../shared/school';
 
-
-
 class Main extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +22,7 @@ class Main extends Component {
         return (
             <View style={{flex: 1}}>
                 <Directory school={this.state.school} onPress={schoolId => this.onSchoolSelect(schoolId)}/>
-                <SchoolInfo school={this.state.school.filter(school => school.id === this.state.selectedSchool)[0]} />
+                <SchoolInfo school2={this.state.school.filter(school => school.id === this.state.selectedSchool)[0]} />
             </View>
         )
     }

@@ -19,16 +19,16 @@ function RenderSchool({school}) {
 }
 
 class SchoolInfo extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = {
             school: SCHOOL
         };
     }
-    
+
     static navigationOptions = {
-        title: 'School Information'
+        title: 'School Info'
     };
 
     render() {

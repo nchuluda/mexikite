@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
+
+
 
 import About from '../components/AboutComponent';
 import Directory from '../components/DirectoryComponent';
@@ -11,6 +14,15 @@ import Home from '../components/HomeComponent';
 import Main from '../components/MainComponent';
 import SchoolInfo from '../components/SchoolInfoComponent';
 
+function LogoTitle() {
+  return (
+    
+      <Image
+      style={{ width: 120, height: 120, alignContent: 'center' }}
+      source={require('../components/images/mexikite.png')}
+    />
+  );
+}
 
 const AboutStack = createStackNavigator();
 
@@ -35,9 +47,15 @@ function HomeStackScreen() {
       initialRouteName="Home"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: '#142850' },
+        headerStyle: { backgroundColor: '#142850'
+         },
       }}>
-      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen 
+        name="MexiKite" 
+        options={{ headerTitle: props => <LogoTitle {...props} />}}
+        headerTitleStyle="center"
+        component={Home} />
+
       <HomeStack.Screen name="SchoolInfo" component={SchoolInfo} />
     </HomeStack.Navigator>
   );

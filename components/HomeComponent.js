@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { Card } from 'react-native-elements';
 import { SCHOOL } from '../shared/school';
 
@@ -8,7 +8,7 @@ function RenderItem({item}) {
         return (
             <Card
                 featuredTitle={item.name}
-                image={require('./images/shakavibes.jpg')}>
+                image={require('./images/holbox.jpg')}>
                 <Text
                     style={{margin: 10}}>
                     {item.description}
@@ -35,11 +35,22 @@ class Home extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={{alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
-                    <Text>Featured Kite School</Text>
+            
+                <View style={{flex: 1, alignItems: 'center'}}>
+                <Image
+                resizeMode='contain'
+                resizeMethod='scale'
+                source={require('./images/home.jpg')}
+                
+            />
+                    
                 </View>
+                <View style={{flex: 1, alignItems: 'center', marginTop: 10}}>
+
+                <Text>Featured Kite School</Text>
                 <RenderItem 
                     item={this.state.school.filter(school => school.featured)[0]} />
+                </View>
             </ScrollView>
         );
     }

@@ -22,15 +22,15 @@ class Directory extends Component {
             return (
                 <ListItem
                     title={item.name}
-                    subtitle={item.description}
+                    subtitle={item.location}
                     onPress={() => navigate('SchoolInfo', { schoolId: item.id })}
                     leftAvatar={{ source: require('./images/shakavibes.jpg')}}
                 />
             );
         };
-
+    
         return (
-            <FlatList
+            <FlatList 
                 data={this.state.school}
                 renderItem={renderDirectoryItem}
                 keyExtractor={item => item.id.toString()}
