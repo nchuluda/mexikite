@@ -1,0 +1,6 @@
+export const SCHOOL_LOADING = 'SCHOOL_LOADING';
+export const ADD_SCHOOL = 'ADD_SCHOOL';
+export const SCHOOL_FAILED = 'SCHOOL_FAILED';
+
+export const ADD_COMMENTS = 'ADD_COMMENTS';
+export const COMMENTS_FAILED = 'COMMENTS_FAILED';

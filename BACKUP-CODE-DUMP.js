@@ -1,3 +1,42 @@
+paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
+
+leftAvatar={{ source: require('./images/shakavibes.jpg')}}
+
+<ScrollView>
+            
+            <View style={{flex: 1, alignItems: 'center'}}>
+                <Image
+                resizeMode='contain'
+                source={require('./images/home.jpg')}
+                />
+                </View>
+                    
+                
+                <View style={{flex: 1, alignItems: 'center', marginTop: 10}}>
+
+                <Text>Featured Kite School</Text>
+                <RenderItem 
+                    item={this.state.school.filter(school => school.featured)[0]} />
+                </View>
+            </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import A from '../components/A';
 import B from '../components/B';
 import C from '../components/C';

@@ -1,37 +1,43 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import { SCHOOL } from '../shared/school';
+import { FlatList, View, StyleSheet } from 'react-native';
+import { ListItem, Tile } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+        school: state.school
+    };
+};
 
 class Directory extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            school: SCHOOL
-        };
-    }
 
-    static navigationOptions = {
-        title: 'Directory'
-    };
 
     render() {
         const { navigate } = this.props.navigation;
         const renderDirectoryItem = ({item}) => {
             return (
+                <View >
                 <ListItem
                     title={item.name}
                     subtitle={item.location}
                     onPress={() => navigate('SchoolInfo', { schoolId: item.id })}
-                    leftAvatar={{ source: require('./images/shakavibes.jpg')}}
+                    leftAvatar={{ source: {uri: baseUrl + item.image}}}
                 />
+                <Tile
+                    featured
+                    onPress={() => navigate('SchoolInfo', { schoolId: item.id })}
+                    imageSrc={{uri: baseUrl + item.image}}
+                    
+                />
+                </View>
             );
         };
     
         return (
             <FlatList 
-                data={this.state.school}
+                data={this.props.school.school}
                 renderItem={renderDirectoryItem}
                 keyExtractor={item => item.id.toString()}
             />
@@ -39,4 +45,10 @@ class Directory extends Component {
     }
 }
 
-export default Directory;
+const styles = StyleSheet.create({
+    schoolTile: {
+        backgroundColor: '#fff'
+    }
+});
+
+export default connect(mapStateToProps)(Directory);

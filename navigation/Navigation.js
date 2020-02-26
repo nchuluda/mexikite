@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-
+import { connect } from 'react-redux';
+import { fetchSchool, fetchComments } from '../redux/ActionCreators';
 
 
 import About from '../components/AboutComponent';
@@ -13,6 +15,11 @@ import Directory from '../components/DirectoryComponent';
 import Home from '../components/HomeComponent';
 import Main from '../components/MainComponent';
 import SchoolInfo from '../components/SchoolInfoComponent';
+
+const mapDispatchToProps = {
+  fetchSchool,
+  fetchComments
+};
 
 function LogoTitle() {
   return (
@@ -34,7 +41,7 @@ function AboutStackScreen() {
         headerTintColor: 'white',
         headerStyle: { backgroundColor: '#142850' },
       }}>
-      <AboutStack.Screen name="About" component={About} />
+      <AboutStack.Screen name="About" options={{ headerTitle: props => <LogoTitle {...props} />}} component={About} />
     </AboutStack.Navigator>
   );
 }
@@ -71,7 +78,7 @@ function DirectoryStackScreen() {
         headerTintColor: 'white',
         headerStyle: { backgroundColor: '#142850' },
       }}>
-      <DirectoryStack.Screen name="Directory" component={Directory} />
+      <DirectoryStack.Screen name="Directory" options={{ headerTitle: props => <LogoTitle {...props} />}} component={Directory} />
       <DirectoryStack.Screen name="SchoolInfo" component={SchoolInfo} />
     </DirectoryStack.Navigator>
   );
@@ -80,6 +87,7 @@ function DirectoryStackScreen() {
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
+
   return (
     <Tab.Navigator
         screenOptions={({ route }) => ({
