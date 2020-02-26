@@ -68,3 +68,13 @@ export const addSchool = school => ({
     payload: school
 });
 
+export const postFavorite = schoolId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFavorite(schoolId));
+    }, 2000);
+};
+
+export const addFavorite = schoolId => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: schoolId
+});

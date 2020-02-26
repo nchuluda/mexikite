@@ -4,3 +4,5 @@ export const SCHOOL_FAILED = 'SCHOOL_FAILED';
 
 export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const COMMENTS_FAILED = 'COMMENTS_FAILED';
+
+export const ADD_FAVORITE = 'ADD_FAVORITE';

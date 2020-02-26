@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -23,10 +22,10 @@ const mapDispatchToProps = {
 
 function LogoTitle() {
   return (
-    
       <Image
       style={{ width: 120, height: 120, alignContent: 'center' }}
       source={require('../components/images/mexikite.png')}
+      onPress={() => navigate('Home')}
     />
   );
 }
@@ -41,7 +40,7 @@ function AboutStackScreen() {
         headerTintColor: 'white',
         headerStyle: { backgroundColor: '#142850' },
       }}>
-      <AboutStack.Screen name="About" options={{ headerTitle: props => <LogoTitle {...props} />}} component={About} />
+      <AboutStack.Screen name="About" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={About} />
     </AboutStack.Navigator>
   );
 }
@@ -59,7 +58,7 @@ function HomeStackScreen() {
       }}>
       <HomeStack.Screen 
         name="MexiKite" 
-        options={{ headerTitle: props => <LogoTitle {...props} />}}
+        options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}}
         headerTitleStyle="center"
         component={Home} />
 
@@ -78,8 +77,8 @@ function DirectoryStackScreen() {
         headerTintColor: 'white',
         headerStyle: { backgroundColor: '#142850' },
       }}>
-      <DirectoryStack.Screen name="Directory" options={{ headerTitle: props => <LogoTitle {...props} />}} component={Directory} />
-      <DirectoryStack.Screen name="SchoolInfo" component={SchoolInfo} />
+      <DirectoryStack.Screen name="Directory" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={Directory} />
+      <DirectoryStack.Screen name="SchoolInfo" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={SchoolInfo} />
     </DirectoryStack.Navigator>
   );
 }

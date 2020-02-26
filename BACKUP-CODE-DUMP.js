@@ -2,6 +2,8 @@ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
 
 leftAvatar={{ source: require('./images/shakavibes.jpg')}}
 
+//// onPress={() => Navigation.navigate('Home')}
+
 <ScrollView>
             
             <View style={{flex: 1, alignItems: 'center'}}>

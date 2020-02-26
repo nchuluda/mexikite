@@ -3,12 +3,18 @@ import { Text, View, ScrollView, FlatList } from 'react-native';
 import { Card, Icon, Image, Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import { postFavorite } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
         school: state.school,
-        comments: state.comments
+        comments: state.comments,
+        favorites: state.favorites
     };
+};
+
+const mapDispatchToProps = {
+    postFavorite: schoolId => (postFavorite(schoolId))
 };
 
 function RenderSchool(props) {   
@@ -47,7 +53,7 @@ function RenderComments({comments}) {
             <View style={{margin: 10}}>
                 <Text style={{fontSize: 14}}>{item.text}</Text>
                 <Text style={{fontSize: 12}}>{item.rating} Stars</Text>
-                <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
+                <Text style={{fontSize: 12}}>{`- ${item.author}, ${item.date}`}</Text>
             </View>
         );
     };
@@ -64,16 +70,9 @@ function RenderComments({comments}) {
 }
 
 class SchoolInfo extends Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-            favorite: false
-        };
-    }
 
-    markFavorite() {
-        this.setState({favorite: true});
+    markFavorite(schoolId) {
+        this.props.postFavorite(schoolId);
     }
 
     render() {
@@ -84,13 +83,12 @@ class SchoolInfo extends Component {
         return (
         <ScrollView>
             <RenderSchool school={school}
-                          favorite={this.state.favorite}
-                          markFavorite={() => this.markFavorite()} />
+                          favorite={this.props.favorites.includes(schoolId)}
+                          markFavorite={() => this.markFavorite(schoolId)} />
             <RenderComments comments={comments} />
         </ScrollView>
         );
     }
-
 }
 
-export default connect(mapStateToProps)(SchoolInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(SchoolInfo);

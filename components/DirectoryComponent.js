@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import { ListItem, Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
@@ -34,7 +35,18 @@ class Directory extends Component {
                 </View>
             );
         };
-    
+
+        if (this.props.school.isLoading) {
+            return <Loading />;
+        }
+        if (this.props.school.errMess) {
+            return (
+                <View>
+                    <Text>{props.school.errMess}</Text>
+                </View>
+            );
+        }
+        
         return (
             <FlatList 
                 data={this.props.school.school}

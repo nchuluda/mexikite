@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Image, ImageBackground } from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
@@ -10,7 +11,19 @@ const mapStateToProps = state => {
     };
 };
 
-function RenderItem({item}) {
+function RenderItem(props) {
+    const { item } = props;
+    
+    if (props.isLoading) {
+        return <Loading />;
+    }
+    if (props.errMess) {
+        return (
+            <View>
+                <Text>{props.errMess}</Text>
+            </View>
+        );
+    }
     if (item) {
         return (
             <Card
@@ -39,7 +52,10 @@ class Home extends Component {
                 <View style={{flex: 1, alignItems: 'center', marginTop: 10}}>
                     <Text>Featured Kite School</Text>
                     <RenderItem 
-                        item={this.props.school.school.filter(school => school.featured)[0]} />
+                        item={this.props.school.school.filter(school => school.featured)[0]} 
+                        isLoading={this.props.school.isLoading}
+                        errMess={this.props.school.errMess}
+                        />
                 </View>
             </ScrollView>
         );
