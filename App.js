@@ -7,8 +7,10 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import MyTabs from './navigation/Navigation';
 import Main2 from './components/Main2Component'
+import { PersistGate } from 'redux-persist/es/integration/react';
+import Loading from './components/LoadingComponent';
 
-const store = ConfigureStore();
+const { persistor, store } = ConfigureStore();
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -33,9 +35,13 @@ export default function App() {
 
   return (
     <Provider store={store}>
+      <PersistGate
+                loading={<Loading />}
+                persistor={persistor}>
       <NavigationContainer>
         <Main2 />
       </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }

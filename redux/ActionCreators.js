@@ -78,3 +78,8 @@ export const addFavorite = schoolId => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: schoolId
 });
+
+export const deleteFavorite = schoolId => ({
+    type: ActionTypes.DELETE_FAVORITE,
+    payload: schoolId
+}); 
