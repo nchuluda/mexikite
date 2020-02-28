@@ -1,3 +1,89 @@
+
+function RenderItem(props) {
+  const { item } = props;
+  
+  if (props.isLoading) {
+      return <Loading />;
+  }
+  if (props.errMess) {
+      return (
+          <View>
+              <Text>{props.errMess}</Text>
+          </View>
+      );
+  }
+  if (item) {
+      return (
+          <Card
+              featuredTitle={item.name}
+              image={{uri: baseUrl + item.image}}
+              
+>
+              <Text
+                  style={{ fontSize: 14, margin: 10}}>
+                  {item.description}
+              </Text>
+              <Button
+                  title={item.name}
+                  onPress={() => navigate('SchoolInfo', { schoolId: item.id })}
+
+              />
+          </Card>
+      );
+  }
+  return <View />;
+}
+
+
+
+
+<Input
+                            placeholder='Name'
+                            leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+                            leftIconContainerStyle={{paddingRight: 10}}
+                            onChangeText={(name)=>this.setState({name: name})}
+                            value={this.state.name}
+                            />
+                        <Input
+                            placeholder='Email'
+                            leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+                            leftIconContainerStyle={{paddingRight: 10}}
+                            onChangeText={(email)=>this.setState({email: email})}
+                            value={this.state.email}
+                            />
+                        <Input
+                            multiline='true'
+                            placeholder='Comment'
+                            leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
+                            leftIconContainerStyle={{paddingRight: 10}}
+                            onChangeText={(text)=>this.setState({text: text})}
+                            value={this.state.text}
+                            />
+
+
+
+
+
+
+<Input
+                            placeholder='Author'
+                            leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+                            leftIconContainerStyle={{paddingRight: 10}}
+                            onChangeText={(name)=>this.setState({name: name})}
+                            value={this.state.name}
+                            />
+                        <Input
+                            placeholder='Comment'
+                            leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
+                            leftIconContainerStyle={{paddingRight: 10}}
+                            onChangeText={(text)=>this.setState({text: text})}
+                            value={this.state.text}
+                            />
+
+
+
+onRequestClose={() => this.toggleModal()}
+
 paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
 
 leftAvatar={{ source: require('./images/shakavibes.jpg')}}

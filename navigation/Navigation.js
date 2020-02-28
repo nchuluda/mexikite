@@ -14,6 +14,7 @@ import Directory from '../components/DirectoryComponent';
 import Home from '../components/HomeComponent';
 import Main from '../components/MainComponent';
 import SchoolInfo from '../components/SchoolInfoComponent';
+import Favorites from '../components/FavoritesComponent';
 
 const mapDispatchToProps = {
   fetchSchool,
@@ -57,12 +58,12 @@ function HomeStackScreen() {
          },
       }}>
       <HomeStack.Screen 
-        name="MexiKite" 
+        name="Home" 
         options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}}
         headerTitleStyle="center"
         component={Home} />
 
-      <HomeStack.Screen name="SchoolInfo" component={SchoolInfo} />
+      <HomeStack.Screen name="SchoolInfo" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={SchoolInfo} />
     </HomeStack.Navigator>
   );
 }
@@ -79,6 +80,8 @@ function DirectoryStackScreen() {
       }}>
       <DirectoryStack.Screen name="Directory" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={Directory} />
       <DirectoryStack.Screen name="SchoolInfo" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={SchoolInfo} />
+      <DirectoryStack.Screen name="Favorites" options={{ headerTitle: props => <LogoTitle {...props} />, headerTitleAlign: 'center'}} component={Favorites} />
+
     </DirectoryStack.Navigator>
   );
 }

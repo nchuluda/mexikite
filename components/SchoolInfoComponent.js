@@ -84,7 +84,8 @@ class SchoolInfo extends Component {
         <ScrollView>
             <RenderSchool school={school}
                           favorite={this.props.favorites.includes(schoolId)}
-                          markFavorite={() => this.markFavorite(schoolId)} />
+                          markFavorite={() => this.markFavorite(schoolId)} 
+                          />
             <RenderComments comments={comments} />
         </ScrollView>
         );
